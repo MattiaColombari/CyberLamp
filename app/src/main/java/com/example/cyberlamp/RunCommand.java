@@ -22,10 +22,8 @@ public class RunCommand implements Runnable{
     Home home;
 
     private BluetoothSocket mmSocket;
-
     private InputStream mmInStream;
     private OutputStream mmOutStream;
-    private byte[] mmBuffer; // mmBuffer store for the stream
 
 
     public RunCommand(Home home) {
