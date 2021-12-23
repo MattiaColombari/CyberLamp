@@ -10,4 +10,8 @@
 
     <color name="red">#FFFF0000</color>
     <color name="light_grey">#B1B1B1</color>
+    <color name="transparent_red">#80FF0000</color>
+    <color name="transparent_green">#8000FF00</color>
+    <color name="transparent_blue">#800000FF</color>
+
 </resources>

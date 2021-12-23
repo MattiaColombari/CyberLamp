@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <integer name="luminosite_defaut">50</integer>
+    <integer name="seekbar_default">0</integer>
 </resources>

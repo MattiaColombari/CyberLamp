@@ -36,15 +36,108 @@
         app:layout_constraintTop_toBottomOf="@+id/statusTextView" />
 
     <SeekBar
-        android:id="@+id/seekBar_luminosite"
-        android:layout_width="300dp"
+        android:id="@+id/seekBar_Intensity"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:progress="@integer/luminosite_defaut"
-        android:progressDrawable="@drawable/seekbar_style"
+        android:layout_marginBottom="125dp"
+        android:progress="@integer/seekbar_default"
+        android:progressDrawable="@drawable/intensity_seekbar_style"
         android:thumb="@drawable/custom_thumb"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/intensity_percentage_TextView"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <SeekBar
+        android:id="@+id/seekBar_Red"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:progress="@integer/seekbar_default"
+        android:progressDrawable="@drawable/red_seekbar_style"
+        android:thumb="@drawable/custom_thumb"
+        app:layout_constraintBottom_toTopOf="@+id/seekBar_Green"
+        app:layout_constraintEnd_toStartOf="@+id/red_percentage_TextView"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <SeekBar
+        android:id="@+id/seekBar_Green"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:progress="@integer/seekbar_default"
+        android:progressDrawable="@drawable/green_seekbar_style"
+        android:thumb="@drawable/custom_thumb"
+        app:layout_constraintBottom_toTopOf="@+id/seekBar_Blue"
+        app:layout_constraintEnd_toStartOf="@+id/green_percentage_TextView"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <SeekBar
+        android:id="@+id/seekBar_Blue"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:progress="@integer/seekbar_default"
+        android:progressDrawable="@drawable/blue_seekbar_style"
+        android:thumb="@drawable/custom_thumb"
+        app:layout_constraintBottom_toTopOf="@+id/seekBar_Intensity"
+        app:layout_constraintEnd_toStartOf="@+id/blue_percentage_TextView"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/red_percentage_TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/seekBar_Red"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/seekBar_Red"
+        app:layout_constraintTop_toTopOf="@+id/seekBar_Red" />
+
+    <TextView
+        android:id="@+id/intensity_percentage_TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/seekBar_Intensity"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/seekBar_Intensity"
+        app:layout_constraintTop_toTopOf="@+id/seekBar_Intensity" />
+
+    <TextView
+        android:id="@+id/green_percentage_TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/seekBar_Green"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/seekBar_Green"
+        app:layout_constraintTop_toTopOf="@+id/seekBar_Green" />
+
+    <TextView
+        android:id="@+id/blue_percentage_TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/seekBar_Blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/seekBar_Blue"
+        app:layout_constraintTop_toTopOf="@+id/seekBar_Blue" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
