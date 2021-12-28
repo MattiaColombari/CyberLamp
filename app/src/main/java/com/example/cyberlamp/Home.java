@@ -7,6 +7,9 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.example.cyberlamp.lampInteraction.LampManager;
+import com.example.cyberlamp.lampInteraction.debugInteraction.DebugLampCommandManager;
+import com.example.cyberlamp.lampInteraction.debugInteraction.DebugLampExceptionManager;
+import com.example.cyberlamp.lampInteraction.debugInteraction.DebugLampSetupManager;
 import com.example.cyberlamp.lampInteraction.simpleInteraction.SimpleLampCommandManager;
 import com.example.cyberlamp.lampInteraction.simpleInteraction.SimpleLampExceptionManager;
 import com.example.cyberlamp.lampInteraction.simpleInteraction.SimpleLampSetupManager;
@@ -68,7 +71,8 @@ public class Home extends AppCompatActivity implements SeekBar.OnSeekBarChangeLi
     }
 
     public void startCommunicationThread(){
-        lampManager = new LampManager(new SimpleLampSetupManager(this), new SimpleLampCommandManager(), new SimpleLampExceptionManager(this));
+        //lampManager = new LampManager(new SimpleLampSetupManager(this), new SimpleLampCommandManager(), new SimpleLampExceptionManager(this));
+        lampManager = new LampManager(new DebugLampSetupManager(), new DebugLampCommandManager(), new DebugLampExceptionManager());
         Thread thread = new Thread(lampManager);
         thread.start();
     }
