@@ -35,12 +35,12 @@ public class LampManager implements Runnable {
 
     public void writeCommand(String data){
         try {
-            if(lampDataStructure.isActive()) {
+            if((lampDataStructure != null) && (lampDataStructure.isActive())) {
                 lampCommandManager.write(lampDataStructure, data);
             }
         } catch (Exception e) {
             lampExceptionManager.manageCommandException(e);
-            lampDataStructure.freeSpace();
+            if(lampDataStructure != null) { lampDataStructure.freeSpace(); }
             this.setup(); //If something goes wrong i'll get again the data of the object.
         }
     }

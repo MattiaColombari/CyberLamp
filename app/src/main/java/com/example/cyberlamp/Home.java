@@ -1,8 +1,16 @@
 package com.example.cyberlamp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
+import android.Manifest;
+import android.app.Activity;
+import android.bluetooth.BluetoothAdapter;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
@@ -43,6 +51,8 @@ public class Home extends AppCompatActivity implements SeekBar.OnSeekBarChangeLi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        requestBlePermissions(this, 2);
+
         statusTextView = (TextView) findViewById(R.id.statusTextView);
         percentageRed = (TextView) findViewById(R.id.red_percentage_TextView);
         percentageGreen = (TextView) findViewById(R.id.green_percentage_TextView);
@@ -71,8 +81,8 @@ public class Home extends AppCompatActivity implements SeekBar.OnSeekBarChangeLi
     }
 
     public void startCommunicationThread(){
-        //lampManager = new LampManager(new SimpleLampSetupManager(this), new SimpleLampCommandManager(), new SimpleLampExceptionManager(this));
-        lampManager = new LampManager(new DebugLampSetupManager(), new DebugLampCommandManager(), new DebugLampExceptionManager());
+        lampManager = new LampManager(new SimpleLampSetupManager(this), new SimpleLampCommandManager(), new SimpleLampExceptionManager(this));
+        //lampManager = new LampManager(new DebugLampSetupManager(), new DebugLampCommandManager(), new DebugLampExceptionManager());
         Thread thread = new Thread(lampManager);
         thread.start();
     }
@@ -123,5 +133,23 @@ public class Home extends AppCompatActivity implements SeekBar.OnSeekBarChangeLi
 
             lampManager.writeCommand(stringBuilder.toString());
         }
+    }
+
+    private static final String[] BLE_PERMISSIONS = new String[]{
+            Manifest.permission.ACCESS_COARSE_LOCATION,
+            Manifest.permission.ACCESS_FINE_LOCATION,
+    };
+
+    private static final String[] ANDROID_12_BLE_PERMISSIONS = new String[]{
+            Manifest.permission.BLUETOOTH,
+            Manifest.permission.BLUETOOTH_ADMIN,
+            Manifest.permission.ACCESS_FINE_LOCATION,
+    };
+
+    public static void requestBlePermissions(Activity activity, int requestCode) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q)
+            ActivityCompat.requestPermissions(activity, ANDROID_12_BLE_PERMISSIONS, requestCode);
+        else
+            ActivityCompat.requestPermissions(activity, BLE_PERMISSIONS, requestCode);
     }
 }

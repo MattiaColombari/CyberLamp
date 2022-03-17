@@ -35,17 +35,17 @@ public class SimpleLampSetupManager implements LampSetupManager {
         BluetoothAdapter bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
 
         //Check for bluetooth and enable it if necessary.
-        if (mainActivity != null) {
+        /*if (mainActivity != null) {
             mainActivity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     if (!bluetoothAdapter.isEnabled()) {
                         Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-                        mainActivity.startActivityForResult(enableBtIntent, 1);
+                        mainActivity.startActivityForResult(enableBtIntent, 5);
                     }
                 }
             });
-        }
+        }*/
 
         BluetoothDevice bluetoothDevice = bluetoothAdapter.getRemoteDevice(MODULE_MAC);
 
